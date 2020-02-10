@@ -40,15 +40,15 @@ Add safe IP addresses here, those IP addresses will be ignored by redalert modul
 
 3. AddRule
 
-First two parameters is for selecting requests respectively host-name and uri-suffix
-				
-if request's host-name and uri match's with those two parameters for the first time then create the counter for this ip-rule pair, if it's created before, increase the counter.
+For example let's examine this rule **AddRule * .php 5 75 test1**
 
-Host-name can be * for match with any host-name.
+First two parameters is for selecting requests respectively host-name and uri-suffix. Host-name can be * for match with any host-name.
 				
-Third parameter is period of time in seconds that counter will count all requests in that time for that rule-ip pair.
+if request's host-name and uri match's with those two parameters for the first time then create the counter for this ip-rule pair, if it's created before, increase the counter. For our example **host-name** is * which means any host is acceptable. **suffix** is .php so any php file will be count.
+			
+Third parameter is period of time in seconds that counter will count all requests in that time for that rule-ip pair. For our example it's 5, so our rule will count matched requests for 5 seconds.
 				
-Fourth parameter is count threshold, if this threshold reached then this IP address will be added to the ipset list described on fifth parameter.
+Fourth parameter is count threshold, if this threshold reached then this IP address will be added to the ipset list described on fifth parameter. For our example count php requests in 5 seconds then compare it to 75. If it's more or equal to 75 then add this IP address to test1 ipset list.
 
 You can add 20 AddRule but less rules better for performance. Think that server is under ddos attack, for each request there will be many counters the amount of addrule, this may even magnify the harm of attack.
 
