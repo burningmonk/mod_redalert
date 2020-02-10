@@ -12,6 +12,7 @@ Timeout is optional, you can get more information about ipset from here:http://i
 
 Your apache configuration file will look like this;
 
+```
 <IfModule mod_redalert.c>
 	LogDirectory "/home/me/"
 	
@@ -25,6 +26,7 @@ Your apache configuration file will look like this;
 	Watch * .php /home/me/watch1
 	Watch mydomain.com user.php /home/me/watch2
 </IfModule>
+```
 
 There is 4 configuration settings you can use;
 
