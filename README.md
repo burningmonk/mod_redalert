@@ -30,15 +30,15 @@ Your apache configuration file will look like this;
 
 There is 4 configuration settings you can use;
 
-## LogDirectory
+1. LogDirectory
 
 Location of redalert.log file
 
-## SafeIp
+2. SafeIp
 
 Add safe IP addresses here, those IP addresses will be ignored by redalert module
 
-## AddRule
+3. AddRule
 
 First two parameters is for selecting requests respectively host-name and uri-suffix
 				
@@ -52,7 +52,7 @@ Fourth parameter is count threshold, if this threshold reached then this ip will
 
 You can add 20 AddRule but less rules better for performance. Think that server is under ddos attack, for each request there will be many counters the amount of addrule, this may even magnify the harm of attack.
 
-## Watch
+4. Watch
 
 You can log requests matched with your host-name uri-suffix pair to develop proper rule for AddRule. First 2 parameters same with AddRule, 3. parameter is path for log file
 
@@ -66,7 +66,7 @@ tail -f /home/watch1
 
 you will see all php requests for all web sites on the fly
 
-### Final
+### Final Step
 
 When you sure your configuration is ok and those ip addresses are all malicious, you can drop all packets came from those ip addresses,
 
