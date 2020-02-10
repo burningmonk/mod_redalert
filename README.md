@@ -44,8 +44,12 @@ Add safe IP addresses here, those IP addresses will be ignored by redalert modul
 
 First two parameters is for selecting requests respectively host-name and uri-suffix
 				
-if request's host-name and uri match's with those two parameters then counter for this ip-rule pair is created Host-name can be * for match with any host-name.
+if request's host-name and uri match's with those two parameters then counter for this ip-rule pair is created if not exist, if created before, increase the counter.
+
+Host-name can be * for match with any host-name.
 				
 Third parameter is period of time in seconds that counter will count all requests in that time for that rule-ip pair.
 				
-Fourth parameter is count threshold, if this threshold reached then this ip will be added to the ipset list described on 5. parameter. You can add 20 AddRule but less rules better for performance(think that server is under ddos attack, for each request there will be counters as number of addrule, this may magnify the attack's effect)
+Fourth parameter is count threshold, if this threshold reached then this ip will be added to the ipset list described on fifth parameter.
+
+You can add 20 AddRule but less rules better for performance. Think that server is under ddos attack, for each request there will be counters as number of addrule, this may even magnify the harm of attack.
