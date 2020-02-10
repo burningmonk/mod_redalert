@@ -10,10 +10,6 @@ ipset create [ipset_name] hash:ip timeout 3600
 
 Timeout is optional, you can get more information about ipset from here:http://ipset.netfilter.org/ipset.man.html
 
-Then you can easily drop all packets came from these IP addresses.
-
-iptables -I INPUT 1 -m set --match-set [ipset name] src -j DROP
-
 Your apache configuration file will look like this;
 
 <IfModule mod_redalert.c>
@@ -52,4 +48,38 @@ Third parameter is period of time in seconds that counter will count all request
 				
 Fourth parameter is count threshold, if this threshold reached then this ip will be added to the ipset list described on fifth parameter.
 
-You can add 20 AddRule but less rules better for performance. Think that server is under ddos attack, for each request there will be counters as number of addrule, this may even magnify the harm of attack.
+You can add 20 AddRule but less rules better for performance. Think that server is under ddos attack, for each request there will be many counters the amount of addrule, this may even magnify the harm of attack.
+
+## Watch
+
+You can log requests matched with your host-name uri-suffix pair to develop proper rule for AddRule. First 2 parameters same with AddRule, 3. parameter is path for log file
+
+For example add this line 
+
+Watch * .php /home/watch1
+
+then execute this command
+
+tail -f /home/watch1
+
+you will see all php requests for all web sites on the fly
+
+### Final
+
+When you sure your configuration is ok and those ip addresses are all malicious, you can drop all packets came from those ip addresses,
+
+iptables -A INPUT -m set --match-set [ipset_name] src -j DROP
+
+### Shared Memory
+
+redalert uses shared memory, you can list or delete the memory if any trouble happens
+
+list shared memories
+
+ipcs -m
+
+delete shared memory created by redalert module
+
+ipcrm -M 0x0006c88b
+
+
