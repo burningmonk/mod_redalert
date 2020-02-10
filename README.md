@@ -82,4 +82,14 @@ delete shared memory created by redalert module
 
 ipcrm -M 0x0006c88b
 
+### Visudo
 
+To make redalert able to run ipset you must give this permision.  Run **visudo** then add this line
+
+www-data ALL=NOPASSWD: /sbin/ipset *
+
+### Log files cannot create
+
+Don't forget to give proper permission on log directories to make module able to deal with files.
+
+chmod 777 /your/log/directory/
