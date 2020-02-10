@@ -1,7 +1,7 @@
 # mod_redalert
 dos ddos protection module for apache webserver
 
-compile: apxs -i -a -c mod_redalert.c
+compile: **apxs -i -a -c mod_redalert.c**
 
 redalert uses ipset to add malicious IP addresses to ipset list
 
