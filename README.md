@@ -66,6 +66,18 @@ tail -f /home/watch1
 
 you will see all php requests for all web sites on the fly
 
+### Visudo
+
+To make redalert able to run ipset you must give this permision.  Run **visudo** then add this line
+
+www-data ALL=NOPASSWD: /sbin/ipset *
+
+### Log files cannot create
+
+Don't forget to give proper permission on log directories to make module able to deal with files.
+
+chmod 777 /your/log/directory/
+
 ### Final Step
 
 When you sure your configuration is ok and those IP addresses are all malicious, you can drop all packets came from those IP addresses,
@@ -83,15 +95,3 @@ ipcs -m
 delete shared memory created by redalert module
 
 ipcrm -M 0x0006c88b
-
-### Visudo
-
-To make redalert able to run ipset you must give this permision.  Run **visudo** then add this line
-
-www-data ALL=NOPASSWD: /sbin/ipset *
-
-### Log files cannot create
-
-Don't forget to give proper permission on log directories to make module able to deal with files.
-
-chmod 777 /your/log/directory/
