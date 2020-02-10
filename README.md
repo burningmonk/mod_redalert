@@ -68,7 +68,7 @@ you will see all php requests for all web sites on the fly
 
 ### Final Step
 
-When you sure your configuration is ok and those ip addresses are all malicious, you can drop all packets came from those ip addresses,
+When you sure your configuration is ok and those IP addresses are all malicious, you can drop all packets came from those IP addresses,
 
 iptables -A INPUT -m set --match-set [ipset_name] src -j DROP
 
