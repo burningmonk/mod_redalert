@@ -5,7 +5,7 @@ compile:
 
 **apxs -i -a -c mod_redalert.c**
 
-RedAlert uses IPSET to add malicious IP addresses to ipset list,
+RedAlert uses IPSET to add malicious IP addresses to IPSET list,
 
 You should create IPSET lists first,
 
@@ -57,7 +57,7 @@ If request's host-name and uri match with those two parameters for the first tim
 			
 Third parameter is period of time in seconds that counter will count all requests in that time for that rule-ip pair matched. For our example it's 5, so our rule will count matched requests for 5 seconds.
 				
-Fourth parameter is count threshold, if this threshold reached then this IP address will be added to the ipset list described on fifth parameter. For our example, count php requests in 5 seconds then compare it to 75. If it's more or equal to 75 then add this IP address to test1 ipset list.
+Fourth parameter is count threshold, if this threshold reached then this IP address will be added to the IPSET list described on fifth parameter. For our example, count php requests in 5 seconds then compare it to 75. If it's more or equal to 75 then add this IP address to test1 ipset list.
 
 You can add 20 AddRule but less rules better for performance. Think that server is under DDOS attack, for each request there will be created counters as much as the amount of AddRules, this may even magnify the harm of attack.
 
@@ -77,7 +77,7 @@ you will see all php requests for all web sites on the fly
 
 ### Visudo
 
-To make RedAlert able to run IPSET you must give this permision.  Run **visudo** then add this line,
+To make RedAlert able to run IPSET, you must give this permision.  Run **visudo** then add this line,
 
 www-data ALL=NOPASSWD: /sbin/ipset *
 
