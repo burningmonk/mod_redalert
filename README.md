@@ -5,7 +5,7 @@ compile:
 
 **apxs -i -a -c mod_redalert.c**
 
-redalert uses IPSET to add malicious IP addresses to ipset list,
+RedAlert uses IPSET to add malicious IP addresses to ipset list,
 
 You should create IPSET lists first,
 
@@ -95,12 +95,12 @@ iptables -A INPUT -m set --match-set [ipset_name] src -j DROP
 
 ### Shared Memory
 
-redalert uses shared memory, you can list or delete the memory if any trouble happens
+RedAlert uses shared memory, you can list or delete the memory if any trouble happens
 
 list shared memories
 
 ipcs -m
 
-delete shared memory created by redalert module
+delete shared memory created by RedAlert module
 
 ipcrm -M 0x0006c88b
